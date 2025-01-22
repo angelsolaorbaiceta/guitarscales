@@ -1,9 +1,40 @@
-              .__  __                       
+# Guitar Scales
+
+A CLI tool to show the notes of a scale on the fretboard.
+
+## Installation
+
+Clone the repo:
+
+```bash
+$ git clone https://github.com/angelsolaorbaiceta/guitarscales.git
+```
+
+Install the binary:
+
+```bash
+$ make install
+```
+
+You should now have the `guitars` binary in your path:
+
+```
+$ which guitars
+```
+
+## Usage
+
+You can get the tool's help menu by passing it the `--help` flag:
+
+```bash
+$ guitars --help
+
+              .__  __
    ____  __ __|__|/  |______ _______  ______
   / ___\|  |  \  \   __\__  \\_  __ \/  ___/
- / /_/  >  |  /  ||  |  / __ \|  | \/\___ \ 
+ / /_/  >  |  /  ||  |  / __ \|  | \/\___ \
  \___  /|____/|__||__| (____  /__|  /____  >
-/_____/                     \/           \/ 
+/_____/                     \/           \/
 
 Guitar Scales.
 Show the positions of a scale at a given root note on the guitar.
@@ -32,7 +63,6 @@ USAGE:
 
 OPTIONS:
 
-  --help      Prints the help menu and exits
   --frets     Then number of frets to show in the diagram (default 17)
 
 
@@ -51,4 +81,4 @@ EXAMPLES:
 AUTHOR:
 
   Written by Angel Sola Orbaiceta <https://github.com/angelsolaorbaiceta>.
-
+```
