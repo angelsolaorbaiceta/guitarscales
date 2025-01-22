@@ -28,7 +28,11 @@ You can get the tool's help menu by passing it the `--help` flag:
 
 ```bash
 $ guitars --help
+```
 
+This prints:
+
+```
               .__  __
    ____  __ __|__|/  |______ _______  ______
   / ___\|  |  \  \   __\__  \\_  __ \/  ___/
@@ -63,6 +67,7 @@ USAGE:
 
 OPTIONS:
 
+  --help      Prints the help menu and exits
   --frets     Then number of frets to show in the diagram (default 17)
 
 
