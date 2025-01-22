@@ -87,3 +87,48 @@ AUTHOR:
 
   Written by Angel Sola Orbaiceta <https://github.com/angelsolaorbaiceta>.
 ```
+
+### Examples
+
+Print the diagram for the minor pentatonic scale in the root of A:
+
+```bash
+$ guitars minpenta A
+```
+
+The result is:
+
+```
+The Minor Pentatonic Scale (root=A)
+	Notes: A C D E G
+	Intervals: P1 m3 P4 P5 m7
+
+ E|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|
+ B|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|
+ G|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|
+ D|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|
+ A|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|
+ E|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|
+    1 |   | 3 |   | 5 |   | 7 |   | 9 |   |   |12 |   |   |15 |   |17 |
+```
+
+If the default 17 frets isn't enough because you have a fancy PRS or Ibanez guitar with 24 frets, you can use the `--frets` flag to print more frets:
+
+```bash
+guitars --frets 24 minpenta A
+```
+
+Result:
+
+```
+The Minor Pentatonic Scale (root=A)
+	Notes: A C D E G
+	Intervals: P1 m3 P4 P5 m7
+
+ E|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|
+ B|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|
+ G|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|
+ D|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|
+ A|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|
+ E|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|---|---|-O-|---|-R-|---|---|-O-|---|-O-|---|-O-|
+    1 |   | 3 |   | 5 |   | 7 |   | 9 |   |   |12 |   |   |15 |   |17 |   |19 |   |21 |   |   |24 |
