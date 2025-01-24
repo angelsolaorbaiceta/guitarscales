@@ -10,8 +10,6 @@ const (
 	ChordQualityMinor      ChordQuality = "m"
 	ChordQualityDiminished ChordQuality = "dim"
 	ChordQualityAugmented  ChordQuality = "aug"
-	ChordQualitySuspended2 ChordQuality = "sus2"
-	ChordQualitySuspended4 ChordQuality = "sus4"
 )
 
 func intervalsToQualityKey(first, second Interval) string {
@@ -25,20 +23,14 @@ var (
 	minKey = intervalsToQualityKey(Intm3, IntP5)
 	// A diminished quality = Minor 3rd + Tritone
 	dimKey = intervalsToQualityKey(Intm3, IntTT)
-	// An augmented quality is derived from two major 3rd intervals
-	augKey = intervalsToQualityKey(IntM3, IntM3)
-	// A suspended second quality is derived from a major 2nd and perfect 4th intervals
-	sus2Key = intervalsToQualityKey(IntM2, IntP4)
-	// A suspended fourth quality is derived from a perfect 4th and major 2nd intervals
-	sus4Key = intervalsToQualityKey(IntP4, IntM2)
+	// An augmented quality = Major 3rd + Minor 6th
+	augKey = intervalsToQualityKey(IntM3, Intm6)
 )
 var intervalsToQualities = map[string]ChordQuality{
-	majKey:  ChordQualityMajor,
-	minKey:  ChordQualityMinor,
-	dimKey:  ChordQualityDiminished,
-	augKey:  ChordQualityAugmented,
-	sus2Key: ChordQualitySuspended2,
-	sus4Key: ChordQualitySuspended4,
+	majKey: ChordQualityMajor,
+	minKey: ChordQualityMinor,
+	dimKey: ChordQualityDiminished,
+	augKey: ChordQualityAugmented,
 }
 
 type Chord struct {
