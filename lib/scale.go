@@ -97,6 +97,33 @@ func (s Scale) NotesWithRoot(root Note) []Note {
 	return notes
 }
 
+// ChordsWithRoot returns the slice of the chords for the scale in a given
+// root note. Chords are constructing taking each note in the scale, and
+// combining it with its third and fifth from the scale.
+func (s Scale) ChordsWithRoot(root Note) []Chord {
+	var (
+		notes        = s.NotesWithRoot(root)
+		nOfNotes     = len(notes)
+		third, fifth Note
+
+		chords = make([]Chord, nOfNotes)
+	)
+
+	for i, note := range notes {
+		third = notes[(i+2)%nOfNotes]
+		fifth = notes[(i+4)%nOfNotes]
+
+		chord := Chord{RootNote: note, intervals: []Interval{
+			note.IntervalTo(third),
+			note.IntervalTo(fifth),
+		}}
+
+		chords[i] = chord
+	}
+
+	return chords
+}
+
 func ScaleWithName(name string) (Scale, error) {
 	scale, ok := scalesByName[strings.ToLower(name)]
 	if !ok {

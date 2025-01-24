@@ -73,9 +73,9 @@ func (i Interval) String() string {
 
 // IntervalBetween returns the iterval that separates this note and another one.
 func (n Note) IntervalTo(other Note) Interval {
-	var semitones = n.idx - other.idx
+	var semitones = other.idx - n.idx
 	if semitones < 0 {
-		semitones = -semitones
+		semitones += len(notes)
 	}
 
 	return intervals[semitones]

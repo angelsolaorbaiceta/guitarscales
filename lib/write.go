@@ -3,6 +3,7 @@ package lib
 import (
 	"fmt"
 	"io"
+	"strings"
 )
 
 var fretsToNumber = map[int]struct{}{
@@ -77,4 +78,14 @@ func PrintGuitarNotes(w io.Writer, notes []Note, tuning Tuning, frets int) {
 	}
 
 	w.Write([]byte("\n"))
+}
+
+func chordsToString(chords []Chord) string {
+	var builder strings.Builder
+
+	for _, chord := range chords {
+		builder.WriteString(fmt.Sprintf("%s ", chord))
+	}
+
+	return builder.String()
 }
