@@ -21,9 +21,11 @@ var fretsToNumber = map[int]struct{}{
 	27: {},
 }
 
+// PrintScale writes into the passed in writer the notes of the given
+// scale, as well as the defining intervals and derived chords.
 func PrintScale(w io.Writer, scale Scale, root Note) {
-	w.Write([]byte(fmt.Sprintf("The %s Scale (root=%s)\n", scale.Name, root)))
-	w.Write([]byte("\tNotes: "))
+	w.Write([]byte(fmt.Sprintf("\nThe %s Scale (root=%s)\n", scale.Name, root)))
+	w.Write([]byte("\n\tNotes:     "))
 	for _, note := range scale.NotesWithRoot(root) {
 		w.Write([]byte(fmt.Sprintf("%s ", note)))
 	}
@@ -31,6 +33,10 @@ func PrintScale(w io.Writer, scale Scale, root Note) {
 	for _, interval := range scale.Intervals {
 		w.Write([]byte(fmt.Sprintf("%s ", interval)))
 	}
+	chords := scale.ChordsWithRoot(root)
+	w.Write([]byte(
+		fmt.Sprintf("\n\tChords:    %s", chordsToString(chords)),
+	))
 	w.Write([]byte("\n\n"))
 }
 
@@ -61,6 +67,9 @@ func printNotesInString(w io.Writer, stringNote Note, notes []Note, frets int) {
 	w.Write([]byte("\n"))
 }
 
+// PrintGuitarNotes writes into the passed in writer the passed in notes a guitar
+// tab where the notes are marked with an "O", and an "R" if it's the root (i.e.
+// the first note).
 func PrintGuitarNotes(w io.Writer, notes []Note, tuning Tuning, frets int) {
 	for _, note := range tuning {
 		printNotesInString(w, note, notes, frets)
@@ -77,9 +86,10 @@ func PrintGuitarNotes(w io.Writer, notes []Note, tuning Tuning, frets int) {
 		}
 	}
 
-	w.Write([]byte("\n"))
+	w.Write([]byte("\n\n"))
 }
 
+// chordsToString produces a string with all chords separated by spaces.
 func chordsToString(chords []Chord) string {
 	var builder strings.Builder
 
